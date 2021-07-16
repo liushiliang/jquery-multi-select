@@ -401,9 +401,9 @@
 
 
             // 过滤器
-            if(typeof options.filter == 'function'){
+            if(typeof options.compare == 'function'){
 
-                $.shellSort(options.data, options.filter);
+                $.shellSort(options.data, options.compare);
                 options.data.map((item, index) =>{
                     item[opt.orderBy] = index;
                     return item;
