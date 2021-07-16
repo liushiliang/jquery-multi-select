@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="jquery-multi-select.css">
+</head>
+<body>
+    <h5></h5>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./jquery-multi-select.js"></script>
+
+    <script defer>
+    $(()=>{
+        $('h5').multiSelect({
+            // you must 
+            data: [
+                {text: 'shushan', order: 1},
+                {text: 'yaohai', order: 4},
+                {text: 'baohe', order: 3},
+                {text: 'luyang', order: 2},
+                {text: 'feixi', order: 6},
+                {text: 'lujiang', order: 12},
+                {text: 'feidong', order: 5},
+                {text: 'chaohu', order: 8},
+                {text: 'changfeng', order: 7},
+                {text: 'zhengwu', order: 10},
+                {text: 'binhuxinqu', order: 16},
+                {text: 'yaohai', order: 15}
+            ],
+            /**
+             * when you remove or add tag , the LISTEN will be invoked！
+             * @param {Array} tags 已选择的选项 (tags you have selected!)
+             * @param {Object} item 刚才增加的（或者删除的选项） （The item you just remove or add）
+             * @param {String} operate 刚才是增加选项还是删除选项 增加为add 删除为delete（operation you did）
+             */ 
+            listen(tags, item, operate){
+                console.log(tags, item, operate);
+            },
+            //排序的依据 要为数值型 且不重复 默认为value字段
+            //orderby attribute (must be numerical)
+            // default: value
+            orderBy: 'order',
+            label: 'text',
+            /**
+             * filter 
+             * @param {Object} item1
+             * @param {Object} item2
+             * @return {Boolean} 比较的依据
+             */
+            filter(item1, item2){
+
+                if(item1.text.length > item2.text.length){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        });
+    })
+    </script>
+</body>
+</html>
