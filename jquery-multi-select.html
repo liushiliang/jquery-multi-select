@@ -13,21 +13,24 @@
     <script src="./jquery-multi-select.js"></script>
 
     <script defer>
+        
+        
+        
     $(()=>{
         $('h5').multiSelect({
-            // you must 
+            //你必须要指定
             data: [
-                {text: 'shushan', order: 1},
-                {text: 'yaohai', order: 4},
-                {text: 'baohe', order: 3},
-                {text: 'luyang', order: 2},
-                {text: 'feixi', order: 6},
-                {text: 'lujiang', order: 12},
-                {text: 'feidong', order: 5},
-                {text: 'chaohu', order: 8},
-                {text: 'changfeng', order: 7},
-                {text: 'zhengwu', order: 10},
-                {text: 'binhuxinqu', order: 16},
+                {text: 'shushan', value: 1},
+                {text: 'yaohai', value: 4},
+                {text: 'baohe', value: 3},
+                {text: 'luyang', value: 2},
+                {text: 'feixi', value: 6},
+                {text: 'lujiang', value: 12},
+                {text: 'feidong', value: 5},
+                {text: 'chaohu', value: 8},
+                {text: 'changfeng', value: 7},
+                {text: 'zhengwu', value: 10},
+                {text: 'binhuxinqu', value: 16},
                 {text: 'yaohai', order: 15}
             ],
             /**
@@ -41,16 +44,18 @@
             },
             //排序的依据 要为数值型 且不重复 默认为value字段
             //orderby attribute (must be numerical)
-            // default: value
-            orderBy: 'order',
-            label: 'text',
+            // the default is : value
+            orderBy: 'value',
+            label: 'text', //default is :text 
             /**
-             * filter 
+             * if you want self-made a function to compare two values 
+             * you can define the function
+             * 可以自定义比较函数
              * @param {Object} item1
              * @param {Object} item2
-             * @return {Boolean} 比较的依据
+             * @return {Boolean} 
              */
-            filter(item1, item2){
+            compare(item1, item2){
 
                 if(item1.text.length > item2.text.length){
                     return true;
@@ -60,6 +65,8 @@
             }
         });
     })
+        
+        
     </script>
 </body>
 </html>
